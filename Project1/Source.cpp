@@ -1,8 +1,8 @@
 #include "includes.h"
+#include "items.h"
 using namespace std;
 player Player;
 enemy Enemy;
-weapon Weapon("Katana", "World's best sword ever made t. nippon pro", 200, 10.0f); // 10.0f value does nothing for some reason
 float percentage = 0.f;
 void combatMenu();
 void mainMenu()
@@ -161,7 +161,7 @@ retry:
 		Player.readStats();
 		goto retry;
 	case 3:
-		Weapon.readItem(Weapon.x);
+		Katana.readItem(Katana.x);
 		system("cls");
 		goto retry;
 	case 4:
