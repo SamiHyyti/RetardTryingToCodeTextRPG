@@ -7,7 +7,7 @@ class player
 private:
 	string name;
 	float health = health + amuletHP;
-	float atk = atk + weaponAtk + amuletAtk; //3 riviä vammaista koodia jotka tulee haittaamaan myöhemmin
+	float atk = atk + weaponAtk + amuletAtk; //3 rows of bad codens imo tbh
 	int def = def + armorDef + amuletDef;
 	int shekels;
 	string weaponN;

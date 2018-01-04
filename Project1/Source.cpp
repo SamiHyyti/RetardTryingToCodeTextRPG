@@ -2,8 +2,8 @@
 using namespace std;
 player Player;
 enemy Enemy;
-weapon Katana("Katana", "World's best sword ever made t. nippon pro", 200, 10.0f); //viimeinen value ei tee mit‰‰n :thinking:
-float percentage = 0.00f;
+weapon Weapon("Katana", "World's best sword ever made t. nippon pro", 200, 10.0f); // 10.0f value does nothing for some reason
+float percentage = 0.f;
 void combatMenu();
 void mainMenu()
 {
@@ -135,7 +135,7 @@ void shop()
 void adventureMenu()
 {
 	bool menu = true;
-	string selectiontext = "1. battle random enemy\n2. current stats and equipment\n3. shop(NOT IMPLIMENTED)\n4. quit\n\nselection: ";
+	string selectiontext = "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST WEAPON VALUES)\n4. quit\n\nselection: ";
 	int selection;
 retry:
 	cout << selectiontext;
@@ -144,7 +144,7 @@ retry:
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		system("cls");
-		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(NOT IMPLIMENTED)\n4. quit\n";
+		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST WEAPON VALUES)\n4. quit\n";
 		cout << "\nERROR invalid selection\nSelection: ";
 		Sleep(1000);
 		system("cls");
@@ -161,14 +161,14 @@ retry:
 		Player.readStats();
 		goto retry;
 	case 3:
-		Katana.readItem(Katana.x);
+		Weapon.readItem(Weapon.x);
 		system("cls");
 		goto retry;
 	case 4:
 		exit(2);
 	default:
 		system("cls");
-		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(NOT IMPLIMENTED)\n4. quit\n\nselection: ERROR invalid selection";
+		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST WEAPON VALUES)\n4. quit\n\nselection: ERROR invalid selection";
 		Sleep(1000);
 		system("cls");
 		goto retry;

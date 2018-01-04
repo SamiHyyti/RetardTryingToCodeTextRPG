@@ -13,4 +13,3 @@ void item::readItem(float x)
 	cout <<  name << endl << description << endl << price << endl << fixed << setprecision(0) << x << endl;
 	system("pause");
 }
-
