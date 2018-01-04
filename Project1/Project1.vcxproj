@@ -114,6 +114,7 @@
   <ItemGroup>
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="item.cpp" />
+    <ClCompile Include="items.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>

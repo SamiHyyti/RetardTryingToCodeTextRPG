@@ -1,5 +1,6 @@
 #include "includes.h"
 #include "items.h"
+#include <vector>
 using namespace std;
 player Player;
 enemy Enemy;
@@ -127,15 +128,19 @@ void characterCreation()
 
 void shop()
 {
-
-
+	//int select;
+	//Katana.readName(), Claymore.readName();
+	//cin >> select;
+	//choise(select);
+	system("pause");
+	system("cls");
 
 }
 
 void adventureMenu()
 {
 	bool menu = true;
-	string selectiontext = "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST WEAPON VALUES)\n4. quit\n\nselection: ";
+	string selectiontext = "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST PHASE)\n4. quit\n\nselection: ";
 	int selection;
 retry:
 	cout << selectiontext;
@@ -144,7 +149,7 @@ retry:
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		system("cls");
-		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST WEAPON VALUES)\n4. quit\n";
+		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST PHASE)\n4. quit\n";
 		cout << "\nERROR invalid selection\nSelection: ";
 		Sleep(1000);
 		system("cls");
@@ -161,14 +166,15 @@ retry:
 		Player.readStats();
 		goto retry;
 	case 3:
-		Katana.readItem(Katana.x);
+		//Claymore.readItem(Claymore.x); //quick stat check meme
+		shop();
 		system("cls");
 		goto retry;
 	case 4:
 		exit(2);
 	default:
 		system("cls");
-		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST WEAPON VALUES)\n4. quit\n\nselection: ERROR invalid selection";
+		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST PHASE)\n4. quit\n\nselection: ERROR invalid selection";
 		Sleep(1000);
 		system("cls");
 		goto retry;
