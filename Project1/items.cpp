@@ -16,7 +16,7 @@ void createItems()
 	createWeapon("Katana","Beste Sword",200,1,10.f);
 	createWeapon("Claymore", "Bigge Sword", 300, 2, 15.f);
 	createArmor("Chainmail", "Protective armor made out of metal rings", 250, 3, 5);
-	createAmulet("Amulet Of Health", "It has vitality enhancing properties", 350, 4, 0, 50, 0);
+	createAmulet("Amulet Of Health", "It has vitality enhancing properties", 350, 4, 0, 50.f, 0.f);
 }
 
 
@@ -26,7 +26,7 @@ void createWeapon(string n, string d, int p, int id, float x)
 	weapon Weapon(n, d, p, id, x);
 	items.push_back(Weapon);
 }
-void createArmor(string n, string d, int p, int id, float x)
+void createArmor(string n, string d, int p, int id, int x)
 {
 	armor Armor(n, d, p, id, x);
 	items.push_back(Armor);
