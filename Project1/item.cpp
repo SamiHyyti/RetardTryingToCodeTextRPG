@@ -11,6 +11,7 @@ item::item(string n, string desc, int p,int id)
 
 void item::readItem(float x)
 {
+
 	cout <<  name << endl << description << endl << price << endl << fixed << setprecision(0) << x << endl;
 	system("pause");
 }

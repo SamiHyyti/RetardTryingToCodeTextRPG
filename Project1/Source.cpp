@@ -1,9 +1,12 @@
 #include "includes.h"
 #include "items.h"
 #include <vector>
+#include <fstream>
+#include <ostream>
 using namespace std;
 player Player;
 enemy Enemy;
+//vector<unsigned int> itemIndex;
 float percentage = 0.f;
 void combatMenu();
 void mainMenu()
@@ -132,6 +135,7 @@ void shop()
 	//Katana.readName(), Claymore.readName();
 	//cin >> select;
 	//choise(select);
+	print();
 	system("pause");
 	system("cls");
 
@@ -226,6 +230,8 @@ retry:
 
 int main()
 {
+	//weapon Weapon("Katana", "World's best sword ever made t. nippon pro", 200, 1, 10);
+	createItems();
 	srand((unsigned int)time(NULL));
 	mainMenu();
 	characterCreation();
