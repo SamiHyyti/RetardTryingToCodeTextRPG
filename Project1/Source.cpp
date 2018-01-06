@@ -137,11 +137,23 @@ void characterCreation()
 
 void shop()
 {
+	int selection;
 	//int select;
 	//Katana.readName(), Claymore.readName();
 	//cin >> select;
 	//choise(select);
 	print();
+	while (!(cin >> selection))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		system("cls");
+		print();
+		cout << "\nERROR invalid selection\nSelection: ";
+		Sleep(1000);
+		system("cls");
+	}
+	inspect(selection);
 	system("pause");
 	system("cls");
 

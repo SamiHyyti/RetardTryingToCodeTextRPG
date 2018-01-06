@@ -21,14 +21,14 @@ void createItems()
 
 
 
-void createWeapon(string n, string d, int p, int id, float x)
+void createWeapon(string n, string d, int p, int id, float atk)
 {
-	weapon Weapon(n, d, p, id, x);
+	weapon Weapon(n, d, p, id, atk);
 	items.push_back(Weapon);
 }
-void createArmor(string n, string d, int p, int id, int x)
+void createArmor(string n, string d, int p, int id, int def)
 {
-	armor Armor(n, d, p, id, x);
+	armor Armor(n, d, p, id, def);
 	items.push_back(Armor);
 }
 void createAmulet(string n, string d, int p, int id,int def, float hp, float atk)
@@ -53,4 +53,12 @@ void print()
 		}
 	}
 
+}
+
+void inspect(int x)
+{
+	if (x < items.size())
+		items[x].readItem();
+	else
+		cout << "error\n";
 }

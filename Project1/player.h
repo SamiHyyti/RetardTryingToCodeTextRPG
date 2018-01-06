@@ -5,7 +5,7 @@ using std::string;
 
 class player
 {
-private:
+protected:
 	string name;
 	float maxhealth;
 	float health;// = health + amuletHP;
