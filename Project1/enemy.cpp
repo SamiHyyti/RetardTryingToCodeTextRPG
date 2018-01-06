@@ -33,9 +33,13 @@ float enemy::attack()
 		float dmg;
 		float dmgMult = x / (x + armor);
 		dmg = x * dmgMult;
+		if (armor == 0)
+			health = health - x;
+		else;
 		health = health - dmg;
 		system("cls");
 		cout << "Enemy took " << setprecision(2) << fixed << dmg << " damage\n";
 		system("pause");
 		system("cls");
 	}
+

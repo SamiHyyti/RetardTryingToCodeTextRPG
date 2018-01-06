@@ -9,7 +9,7 @@ float player::alive()
 void player::readStats()
 {
 	system("cls");
-	cout << name << endl << "health: " << setprecision(2) << fixed << health << endl << "attack: " << atk << endl << "defense: " << def << endl << "shekels: " << shekels << endl << endl;
+	cout << name << endl << "health: " << setprecision(2) << fixed << health << "/" << setprecision(0) << fixed << maxhealth << endl << "attack: " << atk << endl << "defense: " << def << endl << "shekels: " << shekels << endl << endl;
 	system("pause");
 	system("cls");
 }
@@ -40,6 +40,7 @@ retry:
 	case 1:
 		check = 1;
 		health = 150.f;
+		maxhealth = health;
 		atk = 7.f;
 		def = 20;
 		shekels = 15;
@@ -47,6 +48,7 @@ retry:
 	case 2:
 		check = 1;
 		health = 50.f;
+		maxhealth = health;
 		atk = 2.f;
 		def = 0;
 		shekels = 500;
@@ -54,6 +56,7 @@ retry:
 	case 3:
 		check = 1;
 		health = 100.f;
+		maxhealth = health;
 		atk = 10.f;
 		def = 10;
 		shekels = 15;
@@ -103,7 +106,6 @@ float player::attack(int x)
 }
 void player::equip()
 {
-
 }
 void player::takeDamage(float x)
 {

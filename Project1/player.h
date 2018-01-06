@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <string>
 using std::string;
 
@@ -6,11 +7,12 @@ class player
 {
 private:
 	string name;
-	float health = health + amuletHP;
-	float atk = atk + weaponAtk + amuletAtk; //3 rows of bad codens imo tbh
-	int def = def + armorDef + amuletDef;
+	float maxhealth;
+	float health;// = health + amuletHP;
+	float atk;// = atk + weaponAtk + amuletAtk; //3 rows of bad codens imo tbh
+	int def;// = def + armorDef + amuletDef;
 	int shekels;
-	string weaponN;
+	/*string weaponN;
 	string weaponDesc;
 	int weaponAtk;
 	string armorN;
@@ -20,7 +22,7 @@ private:
 	string amuletDesc;
 	int amuletHP;
 	int amuletAtk;
-	int amuletDef;
+	int amuletDef;*/
 public:
 	float alive();
 	void readStats();

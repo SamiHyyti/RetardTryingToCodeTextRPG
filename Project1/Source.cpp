@@ -6,12 +6,11 @@
 using namespace std;
 player Player;
 enemy Enemy;
-//vector<unsigned int> itemIndex;
 float percentage = 0.f;
 void combatMenu();
 void mainMenu()
 {
-	string menutext = "text monster killing RPG v0.05 early acces alpha\n\n1. New game\n2. Quit game\n\n";
+	string menutext = "text monster killing RPG v0.07 early acces alpha\n\n1. New game\n2. Quit game\n\n";
 	int choise;
 retry:
 	cout << menutext;
@@ -49,7 +48,7 @@ void generateEnemy()
 	int x = rand() % 100 + 1;
 	if (x < 51)
 	{
-		Enemy.stats(10.f + 10.f * percentage, 1, 10.f, percentage, "Goblin");
+		Enemy.stats(10.f + 10.f * percentage, 0, 10.f, percentage, "Goblin");
 	}
 	else if (x < 81)
 	{
@@ -230,7 +229,6 @@ retry:
 
 int main()
 {
-	//weapon Weapon("Katana", "World's best sword ever made t. nippon pro", 200, 1, 10);
 	createItems();
 	srand((unsigned int)time(NULL));
 	mainMenu();
