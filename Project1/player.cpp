@@ -109,25 +109,25 @@ void player::equip()
 }
 void player::takeDamage(float x)
 {
-	float dmgMult = x / (x + def);
-	float dmg = x * dmgMult;
-	int y = rand() % 100 + 1;
-	if (y < 51)
-	{
-		if (rand() % 100 < 75)
+		float dmgMult = x / (x + def);
+		float dmg = x * dmgMult;
+		int y = rand() % 100 + 1;
+		if (y < 51)
 		{
+			if (rand() % 100 < 75)
+			{
+			}
+			else
+				dmg = 0.0f;
 		}
-		else
-			dmg = 0.0f;
-	}
 		else if (y < 81)
-	{
-		if (rand() % 100 < 85)
 		{
-			dmg = dmg * 0.85;
-		}
-		else
-			dmg = 0.0f;
+			if (rand() % 100 < 85)
+			{
+				dmg = dmg * 0.85;
+			}
+			else
+				dmg = 0.0f;
 		}
 		else
 		{
@@ -137,10 +137,20 @@ void player::takeDamage(float x)
 			}
 			else
 				dmg = 0.f;
-	}
+		}
+	if (dmg != 0)
+	{
 		health = health - dmg;
 		system("cls");
 		cout << "you took " << setprecision(2) << fixed << dmg << " damage.\n You have " << health << " health left" << endl;
 		system("pause");
 		system("cls");
+	}
+	else
+	{
+		system("cls");
+		cout << "The enemy attack missed you!\n";
+		system("pause");
+		system("cls");
+	}
 }

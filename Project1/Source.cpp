@@ -8,6 +8,13 @@ player Player;
 enemy Enemy;
 float percentage = 0.f;
 void combatMenu();
+void youmissed()
+{
+	system("cls");
+	cout << "Your attack missed!\n";
+	system("pause");
+	system("cls");
+}
 void mainMenu()
 {
 	string menutext = "text monster killing RPG v0.07 early acces alpha\n\n1. New game\n2. Quit game\n\n";
@@ -208,15 +215,24 @@ retry:
 	{
 	case 1:
 		x = Player.attack(selection);
-		Enemy.takeDamage(x);
+		if (x != 0)
+			Enemy.takeDamage(x);
+		else
+			youmissed();
 		break;
 	case 2:
 		x = Player.attack(selection);
-		Enemy.takeDamage(x);
+		if (x != 0)
+			Enemy.takeDamage(x);
+		else
+			youmissed();
 		break;
 	case 3:
 		x = Player.attack(selection);
-		Enemy.takeDamage(x);
+		if (x != 0)
+			Enemy.takeDamage(x);
+		else
+			youmissed();
 		break;
 	default:
 		system("cls");
