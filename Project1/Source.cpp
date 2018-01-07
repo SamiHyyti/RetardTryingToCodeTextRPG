@@ -16,7 +16,7 @@ void youmissed()
 }
 void mainMenu()
 {
-	string menutext = "text monster killing RPG v0.07 early acces alpha\n\n1. New game\n2. Quit game\n";
+	string menutext = "text monster killing RPG v0.15 early acces alpha\n\n1. New game\n2. Quit game\n";
 	cout << menutext;
 	while (1)
 	{
