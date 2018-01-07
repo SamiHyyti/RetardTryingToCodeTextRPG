@@ -20,4 +20,4 @@
 #define VK_NUMPAD7	0x67
 #define VK_NUMPAD8	0x68
 #define VK_NUMPAD9	0x69
-#define pause cout << "\nPress any key to continue...";_getch();
+//#define pause(); cout << "\nPress any key to continue...";_getch();

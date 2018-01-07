@@ -85,7 +85,7 @@ void inspect()
 			case 2:
 				cls();
 				items[x].readItem();
-				pause
+				pause();
 				goto retry;
 			case 3:
 				return;

@@ -10,7 +10,7 @@ void player::readStats()
 {
 	cls();
 	cout << name << endl << "health: " << setprecision(2) << fixed << health << "/" << setprecision(0) << fixed << maxhealth << endl << "attack: " << atk << endl << "defense: " << def << endl << "shekels: " << shekels << endl << endl;
-	pause
+	pause();
 	cls();
 }
 
@@ -143,14 +143,14 @@ void player::takeDamage(float x)
 		health = health - dmg;
 		cls();
 		cout << "you took " << setprecision(2) << fixed << dmg << " damage.\n You have " << health << " health left" << endl;
-		pause
+		pause();
 		cls();
 	}
 	else
 	{
 		cls();
 		cout << "The enemy attack missed you!\n";
-		pause
+		pause();
 		cls();
 	}
 }

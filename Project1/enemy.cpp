@@ -36,7 +36,7 @@ float enemy::attack()
 		health = health - dmg;
 		cls();
 		cout << "Enemy took " << setprecision(2) << fixed << dmg << " damage\n";
-		pause
+		pause();
 		cls();
 	}
 

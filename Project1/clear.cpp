@@ -1,6 +1,7 @@
 #include "clear.h"
 #include "Windows.h"
-
+#include "conio.h"
+#include <iostream>
 void cls() //windows h function to replace screen with nulls
 {
 	DWORD n;
@@ -14,4 +15,10 @@ void cls() //windows h function to replace screen with nulls
 	GetConsoleScreenBufferInfo(h, &csbi);
 	FillConsoleOutputAttribute(h, csbi.wAttributes, size, coord, &n);
 	SetConsoleCursorPosition(h, coord);
+}
+
+void pause()
+{
+	std::cout << "\nPress any key to continue..."; 
+	_getch();
 }

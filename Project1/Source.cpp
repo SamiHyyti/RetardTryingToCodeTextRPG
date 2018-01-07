@@ -12,7 +12,7 @@ void youmissed()
 {
 	cls();
 	cout << "Your attack missed!\n";
-	pause
+	pause();
 }
 void mainMenu()
 {
@@ -97,7 +97,7 @@ retry:
 			{
 				cls();
 				cout << "YOU DIED\nGAME OVER!\n";
-				pause
+				pause();
 				exit(3);
 			}
 		}
@@ -149,7 +149,7 @@ void shop()
 		cls();
 	}*/
 	inspect();
-	pause
+	pause();
 	cls();
 
 }
