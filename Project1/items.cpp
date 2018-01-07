@@ -55,14 +55,49 @@ void print()
 void inspect()
 {
 	int x;
-	while (!(cin >> x))
+	while (1)
 	{
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		Sleep(100);
-		cls();
+		_getch();
+		if (GetAsyncKeyState(VK_KEY_1) & 0x8000 || GetAsyncKeyState(VK_NUMPAD1) & 0x8000)
+		{
+			x = 0;
+		}
+		else if (GetAsyncKeyState(VK_KEY_2) & 0x8000 || GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
+		{
+			x = 1;
+		}
+		else if (GetAsyncKeyState(VK_KEY_3) & 0x8000 || GetAsyncKeyState(VK_NUMPAD3) & 0x8000)
+		{
+			x = 2;
+		}
+		else if (GetAsyncKeyState(VK_KEY_4) & 0x8000 || GetAsyncKeyState(VK_NUMPAD4) & 0x8000)
+		{
+			x = 3;
+		}
+		else if (GetAsyncKeyState(VK_KEY_5) & 0x8000 || GetAsyncKeyState(VK_NUMPAD5) & 0x8000)
+		{
+			x = 4;
+		}
+		else if (GetAsyncKeyState(VK_KEY_6) & 0x8000 || GetAsyncKeyState(VK_NUMPAD6) & 0x8000)
+		{
+			x = 5;
+		}
+		else if (GetAsyncKeyState(VK_KEY_7) & 0x8000 || GetAsyncKeyState(VK_NUMPAD7) & 0x8000)
+		{
+			x = 6;
+		}
+		else if (GetAsyncKeyState(VK_KEY_8) & 0x8000 || GetAsyncKeyState(VK_NUMPAD8) & 0x8000)
+		{
+			x = 7;
+		}
+		else if (GetAsyncKeyState(VK_KEY_9) & 0x8000 || GetAsyncKeyState(VK_NUMPAD9) & 0x8000)
+		{
+			x = 8;
+		}
+		if (x < items.size())
+			break;
 	}
-	x--;
+
 	if (x < items.size())
 	{
 	retry:
