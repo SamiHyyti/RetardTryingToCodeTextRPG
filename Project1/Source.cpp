@@ -16,37 +16,22 @@ void youmissed()
 }
 void mainMenu()
 {
-	string menutext = "text monster killing RPG v0.07 early acces alpha\n\n1. New game\n2. Quit game\n\n";
-	int choise;
-retry:
+	string menutext = "text monster killing RPG v0.07 early acces alpha\n\n1. New game\n2. Quit game\n";
 	cout << menutext;
-	cout << "Selection: ";
-	while (!(cin >> choise))
+	while (1)
 	{
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cls();
-		cout << menutext;
-		cout << "\nERROR invalid selection\nSelection: ";
-		Sleep(1000);
-		cls();
-		cout << menutext << "Selection: ";
+		_getch();
+		if(GetAsyncKeyState(VK_KEY_1) & 0x8000 || GetAsyncKeyState(VK_NUMPAD1) & 0x8000)
+		{
+			cls();
+			return;
+		}
+		else if (GetAsyncKeyState(VK_KEY_2) & 0x8000 || GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
+		{
+			exit(1);
+		}
 	}
-	switch (choise)
-	{
-	case 1:
-		cls();
-		return;
-	case 2:
-		exit(1);
-	default:
-		cls();
-		cout << menutext;
-		cout << "\nERROR invalid selection\nSelection: ";
-		Sleep(1000);
-		cls();
-		goto retry;
-	}
+
 }
 
 void generateEnemy()
@@ -69,59 +54,48 @@ void generateEnemy()
 void battle()
 {
 	bool menu = true;
-	int selection;
-retry:
+	retry:
 	Enemy.readStats();
-	cout << "\n\n1. Attack Enemy\n2. Flee the battle\nSelection: ";
-	while (!(cin >> selection))
+	cout << "\n\n1. Attack Enemy\n2. Flee the battle\n";
+	while (menu == true)
 	{
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cls();
-		cout << "\n\n1. Attack Enemy\n2. Flee the battle\nSelection: ";
-		cout << "\nERROR invalid selection\nSelection: ";
-		Sleep(1000);
-		cls();
-		cout << "\n\n1. Attack Enemy\n2. Flee the battle\nSelection: ";
-	}
-	switch (selection)
-	{
-	case 1:
-		combatMenu();
-		if (Enemy.alive() >!0.0f)
+		_getch();
+		if (GetAsyncKeyState(VK_KEY_1) & 0x8000 || GetAsyncKeyState(VK_NUMPAD1) & 0x8000)
 		{
-			Player.takeDamage(Enemy.attack());
-			if (Player.alive() >!0.0f)
+			combatMenu();
+			if (Enemy.alive() > !0.0f)
+			{
+				Player.takeDamage(Enemy.attack());
+				if (Player.alive() > !0.0f)
+					goto retry;
+				else
+				{
+					cls();
+					cout << "YOU DIED\nGAME OVER!\n";
+					pause();
+					exit(3);
+				}
+			}
+			else if (Enemy.alive() > !0.0f)
 				goto retry;
 			else
 			{
-				cls();
-				cout << "YOU DIED\nGAME OVER!\n";
-				pause();
-				exit(3);
+				menu = false;
+				percentage += 0.01f;
 			}
 		}
-		else if (Enemy.alive() >!0.0f)
-			goto retry;
-		else
-			percentage += 0.01f;
-		break;
-	case 2:
-		if (percentage != 0.00f)
+		else if (GetAsyncKeyState(VK_KEY_2) & 0x8000 || GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
 		{
-			percentage -= 0.01f;
+			menu = false;
+			if (percentage != 0.00f)
+			{
+				percentage -= 0.01f;
+				cls();
+				break;
+			}
 			cls();
-			break;
 		}
-		cls();
-		break;
-	default:
-		cls();
-		cout << "\n\n1. Attack Enemy\n2. Flee the battle\nSelection: ";
-		cout << "\nERROR invalid selection\nSelection: ";
-		Sleep(1000);
-		cls();
-		cout << "\n\n1. Attack Enemy\n2. Flee the battle\nSelection: ";
+
 	}
 }
 
@@ -138,63 +112,41 @@ void shop()
 {
 	int selection;
 	print();
-	/*while (!(cin >> selection))
-	{
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cls();
-		print();
-		cout << "\nERROR invalid selection\nSelection: ";
-		Sleep(1000);
-		cls();
-	}*/
 	inspect();
-	pause();
 	cls();
 
 }
 
 void adventureMenu()
 {
-	bool menu = true;
-	string selectiontext = "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST PHASE)\n4. quit\n\nselection: ";
-	int selection;
+	string selectiontext = "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST PHASE)\n4. quit\n";
 retry:
 	cout << selectiontext;
-	while (!(cin >> selection))
+	while (1)
 	{
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cls();
-		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST PHASE)\n4. quit\n";
-		cout << "\nERROR invalid selection\nSelection: ";
-		Sleep(1000);
-		cls();
-		cout << selectiontext;
-	}
-
-	switch (selection)
-	{
-	case 1:
-		generateEnemy();
-		battle();
-		goto retry;
-	case 2:
-		Player.readStats();
-		goto retry;
-	case 3:
-		//Claymore.readItem(Claymore.x); //quick stat check meme
-		shop();
-		cls();
-		goto retry;
-	case 4:
-		exit(2);
-	default:
-		cls();
-		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST PHASE)\n4. quit\n\nselection: ERROR invalid selection";
-		Sleep(1000);
-		cls();
-		goto retry;
+		_getch();
+		if (GetAsyncKeyState(VK_KEY_1) & 0x8000 || GetAsyncKeyState(VK_NUMPAD1) & 0x8000)
+		{
+			generateEnemy();
+			Sleep(100);
+			battle();
+			goto retry;
+		}
+		else if (GetAsyncKeyState(VK_KEY_2) & 0x8000 || GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
+		{
+			Player.readStats();
+			goto retry;
+		}
+		else if (GetAsyncKeyState(VK_KEY_3) & 0x8000 || GetAsyncKeyState(VK_NUMPAD3) & 0x8000)
+		{
+			shop();
+			cls();
+			goto retry;
+		}
+		else if (GetAsyncKeyState(VK_KEY_4) & 0x8000 || GetAsyncKeyState(VK_NUMPAD4) & 0x8000)
+		{
+			exit(2);
+		}
 	}
 
 }
@@ -202,51 +154,39 @@ retry:
 void combatMenu()
 {
 	bool menu = true;
-	int selection;
 	float x;
 	cls();
-retry:
-	cout << "1. Strong Attack\n2. Normal Attack\n3. Quick Attack\n\nselection: ";
-	while (!(cin >> selection))
+	cout << "1. Strong Attack\n2. Normal Attack\n3. Quick Attack\n";
+	while (menu == true)
 	{
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cls();
-		cout << "1. Strong Attack\n2. Normal Attack\n3. Quick Attack\n";
-		cout << "\nERROR invalid selection\nSelection: ";
-		Sleep(1000);
-		cls();
-		cout << "1. Strong Attack\n2. Normal Attack\n3. Quick Attack\n\nselection: ";
-	}
-	switch (selection)
-	{
-	case 1:
-		x = Player.attack(selection);
-		if (x != 0)
-			Enemy.takeDamage(x);
-		else
-			youmissed();
-		break;
-	case 2:
-		x = Player.attack(selection);
-		if (x != 0)
-			Enemy.takeDamage(x);
-		else
-			youmissed();
-		break;
-	case 3:
-		x = Player.attack(selection);
-		if (x != 0)
-			Enemy.takeDamage(x);
-		else
-			youmissed();
-		break;
-	default:
-		cls();
-		cout << "1. Strong Attack\n2. Normal Attack\n3. Quick Attack\n\nselection: ";
-		Sleep(1000);
-		cls();
-		goto retry;
+		_getch();
+		if (GetAsyncKeyState(VK_KEY_1) & 0x8000 || GetAsyncKeyState(VK_NUMPAD1) & 0x8000)
+		{
+			x = Player.attack(1);
+			if (x != 0)
+				Enemy.takeDamage(x);
+			else
+				youmissed();
+			menu = false;
+		}
+		else if (GetAsyncKeyState(VK_KEY_2) & 0x8000 || GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
+		{
+			x = Player.attack(2);
+			if (x != 0)
+				Enemy.takeDamage(x);
+			else
+				youmissed();
+			menu = false;
+		}
+		else if (GetAsyncKeyState(VK_KEY_3) & 0x8000 || GetAsyncKeyState(VK_NUMPAD3) & 0x8000)
+		{
+			x = Player.attack(3);
+			if (x != 0)
+				Enemy.takeDamage(x);
+			else
+				youmissed();
+			menu = false;
+		}
 	}
 }
 
@@ -255,6 +195,7 @@ int main()
 	createItems();
 	srand((unsigned int)time(nullptr));
 	mainMenu();
+	Sleep(10);
 	characterCreation();
 	Player.readStats();
 	cls();

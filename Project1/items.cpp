@@ -65,34 +65,29 @@ void inspect()
 	x--;
 	if (x < items.size())
 	{
-		int y;
-		retry:
+	retry:
 		cls();
 		cout << "You have selected: ";
 		items[x].readName();
-		cout << "\n1. Purchase\n2. Inspect\n3. Back\n\nSelection: ";
-		while (!(cin >> y))
+		cout << "\n1. Purchase\n2. Inspect\n3. Back\n";
+		while (1)
 		{
-			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cls();
-			Sleep(100);
-		}
-		switch(y)
-		{ 
-			case 1:
+			_getch();
+			if (GetAsyncKeyState(VK_KEY_1) & 0x8000 || GetAsyncKeyState(VK_NUMPAD1) & 0x8000)
+			{
 				goto retry;
-			case 2:
+			}
+			else if (GetAsyncKeyState(VK_KEY_2) & 0x8000 || GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
+			{
 				cls();
 				items[x].readItem();
 				pause();
 				goto retry;
-			case 3:
+			}
+			else if (GetAsyncKeyState(VK_KEY_3) & 0x8000 || GetAsyncKeyState(VK_NUMPAD3) & 0x8000)
+			{
 				return;
-			default:
-				goto retry;
+			}
 		}
 	}
-	else
-		cout << "error\n";
 }

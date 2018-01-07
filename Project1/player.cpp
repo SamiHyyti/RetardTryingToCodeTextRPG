@@ -9,7 +9,7 @@ float player::alive()
 void player::readStats()
 {
 	cls();
-	cout << name << endl << "health: " << setprecision(2) << fixed << health << "/" << setprecision(0) << fixed << maxhealth << endl << "attack: " << atk << endl << "defense: " << def << endl << "shekels: " << shekels << endl << endl;
+	cout << name << endl << "health: " << setprecision(2) << fixed << health << "/" << setprecision(0) << fixed << maxhealth << endl << "attack: " << atk << endl << "defense: " << def << endl << "shekels: " << shekels << endl;
 	pause();
 	cls();
 }
@@ -21,53 +21,38 @@ void player::giveName()
 
 void player::chooseClass()
 {
-	int selection;
 	bool check = false;
-	cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n\nSelection: ";
-retry:
-	while (!(cin >> selection))
+	cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n";
+	while (check == false)
 	{
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cls();
-		cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n\nSelection: ERROR invalid selection";
-		Sleep(1000);
-		cls();
-		cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n\nSelection: ";
-	}
-	switch (selection)
-	{
-	case 1:
-		check = 1;
-		health = 150.f;
-		maxhealth = health;
-		atk = 7.f;
-		def = 20;
-		shekels = 15;
-		break;
-	case 2:
-		check = 1;
-		health = 50.f;
-		maxhealth = health;
-		atk = 2.f;
-		def = 0;
-		shekels = 500;
-		break;
-	case 3:
-		check = 1;
-		health = 100.f;
-		maxhealth = health;
-		atk = 10.f;
-		def = 10;
-		shekels = 15;
-		break;
-	default:
-		cls();
-		cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n\nSelection: ERROR invalid selection";
-		Sleep(1000);
-		cls();
-		cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n\nSelection: ";
-		goto retry;
+		_getch();
+		if (GetAsyncKeyState(VK_KEY_1) || GetAsyncKeyState(VK_NUMPAD1))
+		{
+			check = 1;
+			health = 150.f;
+			maxhealth = health;
+			atk = 7.f;
+			def = 20;
+			shekels = 15;
+		}
+		else if (GetAsyncKeyState(VK_KEY_2) || GetAsyncKeyState(VK_NUMPAD2))
+		{
+			check = 1;
+			health = 50.f;
+			maxhealth = health;
+			atk = 2.f;
+			def = 0;
+			shekels = 500;
+		}
+		else if (GetAsyncKeyState(VK_KEY_3) || GetAsyncKeyState(VK_NUMPAD4))
+		{
+			check = 1;
+			health = 100.f;
+			maxhealth = health;
+			atk = 10.f;
+			def = 10;
+			shekels = 15;
+		}
 	}
 }
 
