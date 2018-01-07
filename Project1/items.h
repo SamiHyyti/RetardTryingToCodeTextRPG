@@ -14,4 +14,4 @@ void choise(int x);
 
 void print();
 
-void inspect(int x);
+void inspect();

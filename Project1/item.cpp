@@ -32,5 +32,5 @@ void item::readItem()
 
 void item::readName()
 {
-	cout << itemID <<". " << name << endl;
+	cout << name << endl;
 }

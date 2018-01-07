@@ -8,10 +8,10 @@ float player::alive()
 
 void player::readStats()
 {
-	system("cls");
+	cls();
 	cout << name << endl << "health: " << setprecision(2) << fixed << health << "/" << setprecision(0) << fixed << maxhealth << endl << "attack: " << atk << endl << "defense: " << def << endl << "shekels: " << shekels << endl << endl;
-	system("pause");
-	system("cls");
+	pause
+	cls();
 }
 
 void player::giveName()
@@ -29,10 +29,10 @@ retry:
 	{
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		system("cls");
+		cls();
 		cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n\nSelection: ERROR invalid selection";
 		Sleep(1000);
-		system("cls");
+		cls();
 		cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n\nSelection: ";
 	}
 	switch (selection)
@@ -62,10 +62,10 @@ retry:
 		shekels = 15;
 		break;
 	default:
-		system("cls");
+		cls();
 		cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n\nSelection: ERROR invalid selection";
 		Sleep(1000);
-		system("cls");
+		cls();
 		cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n\nSelection: ";
 		goto retry;
 	}
@@ -73,7 +73,7 @@ retry:
 
 float player::attack(int x)
 {
-	srand((unsigned int)time(NULL));
+	srand((unsigned int)time(nullptr));
 	float damage;
 	switch (x)
 	{
@@ -141,16 +141,16 @@ void player::takeDamage(float x)
 	if (dmg != 0)
 	{
 		health = health - dmg;
-		system("cls");
+		cls();
 		cout << "you took " << setprecision(2) << fixed << dmg << " damage.\n You have " << health << " health left" << endl;
-		system("pause");
-		system("cls");
+		pause
+		cls();
 	}
 	else
 	{
-		system("cls");
+		cls();
 		cout << "The enemy attack missed you!\n";
-		system("pause");
-		system("cls");
+		pause
+		cls();
 	}
 }

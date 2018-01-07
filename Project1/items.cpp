@@ -1,14 +1,11 @@
-#include "item.h"
+#include "includes.h"
 #include "items.h"
-#include <fstream>
-#include <iostream>
-#include <ostream>
 using namespace std;
 vector<item> items;
 vector<unsigned int> itemIndex;
 void choise(int x)
 {
-
+	
 }
 
 void createItems()
@@ -42,23 +39,60 @@ void print()
 	unsigned int x = 0;
 	if (!items.empty())
 	{
+		cls();
 		for (; x != items.size(); x++)
 		{
 			itemIndex.push_back(x);
 		}
 		for (unsigned int z = 0; z != items.size(); z++)
 		{
-			//cout << itemIndex[z] + 1 << ". ";
+			cout << itemIndex[z] + 1 << ". ";
 			items[z].readName();
 		}
 	}
-
 }
 
-void inspect(int x)
+void inspect()
 {
+	int x;
+	while (!(cin >> x))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		Sleep(100);
+		cls();
+	}
+	x--;
 	if (x < items.size())
-		items[x].readItem();
+	{
+		int y;
+		retry:
+		cls();
+		cout << "You have selected: ";
+		items[x].readName();
+		cout << "\n1. Purchase\n2. Inspect\n3. Back\n\nSelection: ";
+		while (!(cin >> y))
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cls();
+			Sleep(100);
+		}
+		switch(y)
+		{ 
+			case 1:
+				goto retry;
+			case 2:
+				cls();
+				items[x].readItem();
+				pause
+				goto retry;
+			case 3:
+				return;
+			default:
+				goto retry;
+		}
+	}
 	else
 		cout << "error\n";
 }

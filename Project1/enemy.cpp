@@ -19,7 +19,7 @@ float enemy::attack()
 
 	void enemy::readStats()
 	{
-		system("cls");
+		cls();
 		cout << "you are fighting: " << enemyName << endl << enemyName<< " Health: " << setprecision(2)<<fixed <<health << endl;
 	}
 
@@ -34,9 +34,9 @@ float enemy::attack()
 		float dmgMult = x / (x + armor);
 		dmg = x * dmgMult;
 		health = health - dmg;
-		system("cls");
+		cls();
 		cout << "Enemy took " << setprecision(2) << fixed << dmg << " damage\n";
-		system("pause");
-		system("cls");
+		pause
+		cls();
 	}
 

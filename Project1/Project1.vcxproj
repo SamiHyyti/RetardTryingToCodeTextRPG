@@ -112,6 +112,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="clear.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="item.cpp" />
     <ClCompile Include="items.cpp" />
@@ -119,11 +120,13 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="clear.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="items.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="VirtualKeys.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

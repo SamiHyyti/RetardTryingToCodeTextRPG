@@ -10,10 +10,9 @@ float percentage = 0.f;
 void combatMenu();
 void youmissed()
 {
-	system("cls");
+	cls();
 	cout << "Your attack missed!\n";
-	system("pause");
-	system("cls");
+	pause
 }
 void mainMenu()
 {
@@ -26,26 +25,26 @@ retry:
 	{
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		system("cls");
+		cls();
 		cout << menutext;
 		cout << "\nERROR invalid selection\nSelection: ";
 		Sleep(1000);
-		system("cls");
+		cls();
 		cout << menutext << "Selection: ";
 	}
 	switch (choise)
 	{
 	case 1:
-		system("cls");
+		cls();
 		return;
 	case 2:
 		exit(1);
 	default:
-		system("cls");
+		cls();
 		cout << menutext;
 		cout << "\nERROR invalid selection\nSelection: ";
 		Sleep(1000);
-		system("cls");
+		cls();
 		goto retry;
 	}
 }
@@ -78,11 +77,11 @@ retry:
 	{
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		system("cls");
+		cls();
 		cout << "\n\n1. Attack Enemy\n2. Flee the battle\nSelection: ";
 		cout << "\nERROR invalid selection\nSelection: ";
 		Sleep(1000);
-		system("cls");
+		cls();
 		cout << "\n\n1. Attack Enemy\n2. Flee the battle\nSelection: ";
 	}
 	switch (selection)
@@ -96,9 +95,9 @@ retry:
 				goto retry;
 			else
 			{
-				system("cls");
+				cls();
 				cout << "YOU DIED\nGAME OVER!\n";
-				system("pause");
+				pause
 				exit(3);
 			}
 		}
@@ -111,17 +110,17 @@ retry:
 		if (percentage != 0.00f)
 		{
 			percentage -= 0.01f;
-			system("cls");
+			cls();
 			break;
 		}
-		system("cls");
+		cls();
 		break;
 	default:
-		system("cls");
+		cls();
 		cout << "\n\n1. Attack Enemy\n2. Flee the battle\nSelection: ";
 		cout << "\nERROR invalid selection\nSelection: ";
 		Sleep(1000);
-		system("cls");
+		cls();
 		cout << "\n\n1. Attack Enemy\n2. Flee the battle\nSelection: ";
 	}
 }
@@ -130,32 +129,28 @@ void characterCreation()
 {
 	cout << "Enter the name of your character: ";
 	Player.giveName();
-	system("cls");
+	cls();
 	Player.chooseClass();
-	system("cls");
+	cls();
 }
 
 void shop()
 {
 	int selection;
-	//int select;
-	//Katana.readName(), Claymore.readName();
-	//cin >> select;
-	//choise(select);
 	print();
-	while (!(cin >> selection))
+	/*while (!(cin >> selection))
 	{
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		system("cls");
+		cls();
 		print();
 		cout << "\nERROR invalid selection\nSelection: ";
 		Sleep(1000);
-		system("cls");
-	}
-	inspect(selection);
-	system("pause");
-	system("cls");
+		cls();
+	}*/
+	inspect();
+	pause
+	cls();
 
 }
 
@@ -170,11 +165,11 @@ retry:
 	{
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		system("cls");
+		cls();
 		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST PHASE)\n4. quit\n";
 		cout << "\nERROR invalid selection\nSelection: ";
 		Sleep(1000);
-		system("cls");
+		cls();
 		cout << selectiontext;
 	}
 
@@ -190,15 +185,15 @@ retry:
 	case 3:
 		//Claymore.readItem(Claymore.x); //quick stat check meme
 		shop();
-		system("cls");
+		cls();
 		goto retry;
 	case 4:
 		exit(2);
 	default:
-		system("cls");
+		cls();
 		cout << "1. battle random enemy\n2. current stats and equipment\n3. shop(TEST PHASE)\n4. quit\n\nselection: ERROR invalid selection";
 		Sleep(1000);
-		system("cls");
+		cls();
 		goto retry;
 	}
 
@@ -209,18 +204,18 @@ void combatMenu()
 	bool menu = true;
 	int selection;
 	float x;
-	system("cls");
+	cls();
 retry:
 	cout << "1. Strong Attack\n2. Normal Attack\n3. Quick Attack\n\nselection: ";
 	while (!(cin >> selection))
 	{
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		system("cls");
+		cls();
 		cout << "1. Strong Attack\n2. Normal Attack\n3. Quick Attack\n";
 		cout << "\nERROR invalid selection\nSelection: ";
 		Sleep(1000);
-		system("cls");
+		cls();
 		cout << "1. Strong Attack\n2. Normal Attack\n3. Quick Attack\n\nselection: ";
 	}
 	switch (selection)
@@ -247,10 +242,10 @@ retry:
 			youmissed();
 		break;
 	default:
-		system("cls");
+		cls();
 		cout << "1. Strong Attack\n2. Normal Attack\n3. Quick Attack\n\nselection: ";
 		Sleep(1000);
-		system("cls");
+		cls();
 		goto retry;
 	}
 }
@@ -258,11 +253,11 @@ retry:
 int main()
 {
 	createItems();
-	srand((unsigned int)time(NULL));
+	srand((unsigned int)time(nullptr));
 	mainMenu();
 	characterCreation();
 	Player.readStats();
-	system("cls");
+	cls();
 	adventureMenu();
 	return 0;
 }
