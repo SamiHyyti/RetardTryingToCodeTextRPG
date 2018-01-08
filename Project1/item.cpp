@@ -30,6 +30,11 @@ void item::readItem()
 	}
 }
 
+int item::receivePayment()
+{
+	return price;
+}
+
 void item::readName()
 {
 	cout << name << endl;

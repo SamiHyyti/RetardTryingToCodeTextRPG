@@ -5,7 +5,7 @@ using std::string;
 
 class player
 {
-protected:
+private:
 	string name;
 	float maxhealth;
 	float health;// = health + amuletHP;
@@ -31,4 +31,6 @@ public:
 	float attack(int x);
 	void equip();
 	void takeDamage(float x);
+	int offer();
+	void pay(int x);
 };

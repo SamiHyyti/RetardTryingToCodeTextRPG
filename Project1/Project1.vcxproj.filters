@@ -27,10 +27,10 @@
     <ClCompile Include="item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="items.cpp">
+    <ClCompile Include="clear.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="clear.cpp">
+    <ClCompile Include="gamefunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,13 +47,13 @@
     <ClInclude Include="item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="items.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="VirtualKeys.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="clear.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gamefunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -26,7 +26,7 @@ void player::chooseClass()
 	while (check == false)
 	{
 		_getch();
-		if (GetAsyncKeyState(VK_KEY_1) || GetAsyncKeyState(VK_NUMPAD1))
+		if (GetAsyncKeyState(VK_KEY_1) & 0x8000 || GetAsyncKeyState(VK_NUMPAD1) & 0x8000)
 		{
 			check = 1;
 			health = 150.f;
@@ -35,7 +35,7 @@ void player::chooseClass()
 			def = 20;
 			shekels = 15;
 		}
-		else if (GetAsyncKeyState(VK_KEY_2) || GetAsyncKeyState(VK_NUMPAD2))
+		else if (GetAsyncKeyState(VK_KEY_2) & 0x8000 || GetAsyncKeyState(VK_NUMPAD2) & 0x8000)
 		{
 			check = 1;
 			health = 50.f;
@@ -44,7 +44,7 @@ void player::chooseClass()
 			def = 0;
 			shekels = 500;
 		}
-		else if (GetAsyncKeyState(VK_KEY_3) || GetAsyncKeyState(VK_NUMPAD4))
+		else if (GetAsyncKeyState(VK_KEY_3) & 0x8000 || GetAsyncKeyState(VK_NUMPAD4) & 0x8000)
 		{
 			check = 1;
 			health = 100.f;
@@ -138,4 +138,14 @@ void player::takeDamage(float x)
 		pause();
 		cls();
 	}
+}
+
+int player::offer()
+{
+	return shekels;
+}
+
+void player::pay(int x)
+{
+	shekels -= x;
 }

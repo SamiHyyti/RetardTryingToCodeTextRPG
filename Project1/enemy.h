@@ -4,7 +4,7 @@ using std::string;
 
 class enemy
 {
-protected:
+private:
 	string enemyName;
 	float health;
 	int armor;

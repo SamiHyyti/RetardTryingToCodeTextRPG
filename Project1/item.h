@@ -14,6 +14,7 @@ public:
 	float a=0,b=0,c=0;
 	void readName();
 	void readItem();
+	int receivePayment();
 	item(string n, string desc, int p, int id);
 };
 
