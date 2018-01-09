@@ -19,6 +19,8 @@ public:
 	float retHp();
 	float retDmg();
 	int retDef();
+	string retNa();
+	string retDe();
 	item(string n, string desc, int p, int id);
 };
 

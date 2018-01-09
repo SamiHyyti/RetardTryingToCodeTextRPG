@@ -10,7 +10,6 @@ void choise(int x)
 {
 	
 }
-
 void combatMenu()
 {
 	bool menu = true;
@@ -99,7 +98,7 @@ void characterCreation()
 	cls();
 	Player.chooseClass();
 	cls();
-	Player.readStats();
+	Player.creation();
 }
 
 void youmissed()
@@ -320,7 +319,7 @@ void inspect()
 				else
 				{
 					Player.pay(price);
-					Player.equip(items[x].checkID(),items[x].retHp(),items[x].retDmg(),items[x].retDef());
+					Player.equip(items[x].checkID(), items[x].retHp(), items[x].retDmg(), items[x].retDef(), items[x].retNa(), items[x].retDe());
 					cout << "Thank you for your purchase Goy.";
 					Sleep(2500);
 					return;

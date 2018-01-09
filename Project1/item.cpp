@@ -57,3 +57,12 @@ int item::retDef()
 {
 	return c;
 }
+
+string item::retNa()
+{
+	return name;
+}
+string item::retDe()
+{
+	return description;
+}
