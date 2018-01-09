@@ -20,7 +20,16 @@ void cls() //windows h function to replace screen with nulls
 
 void pause()
 {
+	
+	
 	std::cout << "\nPress any key to continue..."; 
-	_getch();
-	_getch();
+	int ch(0);
+	while (ch == 0 || ch == 224)
+	{
+		ch = _getch();
+		if (ch == 0 || ch == 224)
+		{
+			ch = _getch();
+		}
+	}
 }
