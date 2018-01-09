@@ -135,7 +135,7 @@ void generateEnemy()
 
 void mainMenu()
 {
-	string menutext = "text monster killing RPG v0.15 early acces alpha\n\n1. New game\n2. Quit game\n";
+	string menutext = "text monster killing RPG v0.18 early acces alpha\n\n1. New game\n2. Quit game\n";
 	cout << menutext;
 	while (1)
 	{
