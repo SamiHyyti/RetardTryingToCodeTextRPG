@@ -3,9 +3,36 @@ using namespace std;
 
 float enemy::attack()
 	{
-		float dmg;
-		dmg = damage + damage * level;
-		return dmg;
+		srand((unsigned int)time(nullptr));
+		float dmg = damage + damage * level;
+		int x = rand() % 100 + 1;
+		if (x < 51)
+		{
+			if (rand() % 100 < 75)
+			{
+				return dmg;
+			}
+			else
+				return 0;
+		}
+		else if (x < 81)
+		{
+			if (rand() % 100 < 85)
+			{
+				return dmg * 0.85;
+			}
+			else
+				return 0;
+		}
+		else
+		{
+			if (x < 55)
+			{
+				return dmg * 1.5;
+			}
+			else
+				return 0;
+		}
 	}
 
 	void enemy::stats(float h, int a, float d, float l, string n)

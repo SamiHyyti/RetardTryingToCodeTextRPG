@@ -109,6 +109,13 @@ void youmissed()
 	pause();
 }
 
+void enemymissed()
+{
+	cls();
+	cout << "The enemy attack missed you!\n";
+	pause();
+}
+
 void generateEnemy()
 {
 	int x = rand() % 100 + 1;
@@ -160,7 +167,12 @@ retry:
 			combatMenu();
 			if (Enemy.alive() > !0.0f)
 			{
-				Player.takeDamage(Enemy.attack());
+				float x;
+				x = Enemy.attack();
+				if (x != 0)
+					Player.takeDamage(x);
+				else
+					enemymissed();
 				if (Player.alive() > !0.0f)
 					goto retry;
 				else
@@ -197,9 +209,9 @@ retry:
 void createItems()
 {
 	createWeapon("Katana","Beste Sword",200,1,10.f);
-	createWeapon("Claymore", "Bigge Sword", 300, 2, 15.f);
-	createArmor("Chainmail", "Protective armor made out of metal rings", 250, 3, 5);
-	createAmulet("Amulet Of Health", "It has vitality enhancing properties", 350, 4, 0, 50.f, 0.f);
+	createWeapon("Claymore", "Bigge Sword", 300, 1, 15.f);
+	createArmor("Chainmail", "Protective armor made out of metal rings", 250, 2, 5);
+	createAmulet("Amulet Of Health", "It has vitality enhancing properties", 350, 3, 0, 50.f, 0.f);
 }
 
 
@@ -240,7 +252,7 @@ void print()
 
 void inspect()
 {
-	int x;
+	int x = -1;
 	while (1)
 	{
 		_getch();
@@ -290,6 +302,7 @@ void inspect()
 		cls();
 		cout << "You have selected: ";
 		items[x].readName();
+		cout << "Price: " << items[x].receivePayment() << " $\n" << "Your Money: " << Player.offer() << " $\n";
 		cout << "\n1. Purchase\n2. Inspect\n3. Back\n";
 		while (1)
 		{
@@ -298,7 +311,6 @@ void inspect()
 			{
 				int payment = Player.offer();
 				int price = items[x].receivePayment();
-				Player.readStats();
 				if (payment < price)
 				{
 					cout << "You do not have enough money to buy that Goy.";
@@ -308,6 +320,7 @@ void inspect()
 				else
 				{
 					Player.pay(price);
+					Player.equip(items[x].checkID(),items[x].retHp(),items[x].retDmg(),items[x].retDef());
 					cout << "Thank you for your purchase Goy.";
 					Sleep(2500);
 					return;

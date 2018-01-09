@@ -9,7 +9,7 @@ float player::alive()
 void player::readStats()
 {
 	cls();
-	cout << name << endl << "health: " << setprecision(2) << fixed << health << "/" << setprecision(0) << fixed << maxhealth << endl << "attack: " << atk << endl << "defense: " << def << endl << "shekels: " << shekels << endl;
+	cout << name << endl << "health: " << setprecision(2) << fixed << health << "/" << setprecision(0) << fixed << maxhealth + amuletHP << endl << "attack: " << atk + weaponAtk << endl << "defense: " << def + armorDef + amuletDef << endl << "shekels: " << shekels << endl;
 	pause();
 	cls();
 }
@@ -42,7 +42,7 @@ void player::chooseClass()
 			maxhealth = health;
 			atk = 2.f;
 			def = 0;
-			shekels = 500;
+			shekels = 5000;
 		}
 		else if (GetAsyncKeyState(VK_KEY_3) & 0x8000 || GetAsyncKeyState(VK_NUMPAD4) & 0x8000)
 		{
@@ -63,7 +63,7 @@ float player::attack(int x)
 	switch (x)
 	{
 	case 1:
-		damage = atk * 1.5;
+		damage = (atk + weaponAtk + amuletAtk) * 1.5;
 		if (rand() % 100 < 45)
 		{
 			return damage;
@@ -71,7 +71,7 @@ float player::attack(int x)
 		else
 			return 0.f;
 	case 2:
-		damage = atk;
+		damage = (atk + weaponAtk + amuletAtk);
 		if (rand() % 100 < 75)
 		{
 			return damage;
@@ -79,7 +79,7 @@ float player::attack(int x)
 		else
 			return 0.f;
 	case 3:
-		damage = atk * 0.85;
+		damage = (atk + weaponAtk + amuletAtk) * 0.85;
 		if (rand() % 100 < 90)
 		{
 			return damage;
@@ -89,55 +89,34 @@ float player::attack(int x)
 	}
 	return 0;
 }
-void player::equip()
+void player::equip(int equip, float hp, float damage, int defense)
 {
+	if (equip == 1)
+	{
+		weaponAtk = damage;
+	}
+	else if (equip == 2)
+	{
+		armorDef = defense;
+	}
+	else if (equip == 3)
+	{
+		amuletAtk = damage;
+		amuletHP = hp;
+		amuletDef = defense;
+	}
 }
+
 void player::takeDamage(float x)
 {
-		float dmgMult = x / (x + def);
-		float dmg = x * dmgMult;
-		int y = rand() % 100 + 1;
-		if (y < 51)
-		{
-			if (rand() % 100 < 75)
-			{
-			}
-			else
-				dmg = 0.0f;
-		}
-		else if (y < 81)
-		{
-			if (rand() % 100 < 85)
-			{
-				dmg = dmg * 0.85;
-			}
-			else
-				dmg = 0.0f;
-		}
-		else
-		{
-			if (rand() % 100 < 55)
-			{
-				dmg = dmg * 1.5;
-			}
-			else
-				dmg = 0.f;
-		}
-	if (dmg != 0)
-	{
-		health = health - dmg;
-		cls();
-		cout << "you took " << setprecision(2) << fixed << dmg << " damage.\n You have " << health << " health left" << endl;
-		pause();
-		cls();
-	}
-	else
-	{
-		cls();
-		cout << "The enemy attack missed you!\n";
-		pause();
-		cls();
-	}
+	float dmg;
+	float dmgMult = x / (x + def + armorDef + amuletDef);
+	dmg = x * dmgMult;
+	health = health - dmg;
+	cls();
+	cout << "You took " << setprecision(2) << fixed << dmg << " damage.\n You have " << health << " health left" << endl;
+	pause();
+	cls();
 }
 
 int player::offer()

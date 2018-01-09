@@ -2,6 +2,7 @@
 #include "Windows.h"
 #include "conio.h"
 #include <iostream>
+using namespace std;
 void cls() //windows h function to replace screen with nulls
 {
 	DWORD n;
@@ -20,5 +21,6 @@ void cls() //windows h function to replace screen with nulls
 void pause()
 {
 	std::cout << "\nPress any key to continue..."; 
+	_getch();
 	_getch();
 }

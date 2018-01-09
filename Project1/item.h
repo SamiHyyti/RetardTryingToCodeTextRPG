@@ -10,11 +10,15 @@ private:
 	int price;
 public:
 	int itemID;
-	string t1,t2,t3;
+	string t1 = "Health: " , t2 = "Damage: ", t3 = "Defense: ";
 	float a=0,b=0,c=0;
 	void readName();
 	void readItem();
 	int receivePayment();
+	int checkID();
+	float retHp();
+	float retDmg();
+	int retDef();
 	item(string n, string desc, int p, int id);
 };
 
@@ -25,8 +29,7 @@ private:
 public:
 	weapon(string n, string desc, int p, int id, float attack) : item(n, desc, p, id), weaponAttack(attack), x(weaponAttack)
 	{
-		a = x;
-		t1 = "Damage: ";
+		b = x;
 	}
 	float const &x;
 };
@@ -38,8 +41,7 @@ private:
 public:
 	armor(string n, string desc, int p, int id, int armor) : item(n, desc, p, id), armorDefense(armor), y(armorDefense)
 	{
-		a = y;
-		t1 = "Defense: ";
+		c = y;
 	}
 
 	int const &y;
@@ -57,9 +59,6 @@ public:
 		a = x;
 		b = y;
 		c = z;
-		t1 = "Health: ";
-		t2 = "Damage: ";
-		t3 = "Defense: ";
 	}
 
 	float const &x;

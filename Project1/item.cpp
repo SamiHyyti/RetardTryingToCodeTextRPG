@@ -12,15 +12,15 @@ item::item(string n, string desc, int p, int id)
 void item::readItem()
 {
 
-	if (a != 0)//weapon,armor,amulet of health
+	if (a != 0)//amulet of health
 	{
 		cout << name << endl << description << endl << price << endl << t1 << fixed << setprecision(0) << a << endl;
 	}
-	else if (b != 0)//amulet of attack
+	else if (b != 0)//amulet of attack,weapon
 	{
 		cout << name << endl << description << endl << price << endl<< t2 << b << endl;
 	}
-	else if (c != 0)//amulet of defense
+	else if (c != 0)//amulet of defense,marmor
 	{
 		cout << name << endl << description << endl << price << endl << t3 << c << endl;
 	}
@@ -38,4 +38,22 @@ int item::receivePayment()
 void item::readName()
 {
 	cout << name << endl;
+}
+
+int item::checkID()
+{
+	return itemID;
+}
+
+float item::retHp()
+{
+	return a;
+}
+float item::retDmg()
+{
+	return b;
+}
+int item::retDef()
+{
+	return c;
 }

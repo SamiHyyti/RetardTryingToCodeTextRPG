@@ -1,9 +1,5 @@
 #include "includes.h"
 #include "gamefunctions.h"
-#include <vector>
-#include <fstream>
-#include <ostream>
-using namespace std;
 
 int main()
 {
