@@ -35,13 +35,14 @@ float enemy::attack()
 		}
 	}
 
-	void enemy::stats(float h, int a, float d, float l, string n)
+	void enemy::stats(float h, int a, float d, float l, string n, int b)
 	{
 		health = h;
 		armor = a;
 		damage = d;
 		level = l;
 		enemyName = n;
+		bounty = b;
 	}
 
 	void enemy::readStats()
@@ -66,4 +67,7 @@ float enemy::attack()
 		pause();
 		cls();
 	}
-
+	int enemy::givebounty()
+	{
+		return bounty;
+	}

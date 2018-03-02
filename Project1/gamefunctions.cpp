@@ -120,21 +120,21 @@ void generateEnemy()
 	int x = rand() % 100 + 1;
 	if (x < 51)
 	{
-		Enemy.stats(10.f + 10.f * percentage, 0, 10.f, percentage, "Goblin");
+		Enemy.stats(10.f + 10.f * percentage, 0, 10.f, percentage, "Goblin", rand()%(5-1)+1*percentage);
 	}
 	else if (x < 81)
 	{
-		Enemy.stats(20.f + 20.f * percentage, 4, 15.f, percentage, "Orc");
+		Enemy.stats(20.f + 20.f * percentage, 4, 15.f, percentage, "Orc", rand()%(15-5)+1*percentage);
 	}
 	else
 	{
-		Enemy.stats(50.f + 50.f * percentage, 10, 20.f, percentage, "Troll");
+		Enemy.stats(50.f + 50.f * percentage, 10, 20.f, percentage, "Troll", rand()%(25+15)+1*percentage);
 	}
 }
 
 void mainMenu()
 {
-	string menutext = "text monster killing RPG v0.18 early acces alpha\n\n1. New game\n2. Quit game\n";
+	string menutext = "text monster killing RPG v0.19 early acces alpha\n\n1. New game\n2. Quit game\n";
 	cout << menutext;
 	while (1)
 	{
@@ -186,6 +186,10 @@ retry:
 				goto retry;
 			else
 			{
+				Player.getmoney(Enemy.givebounty());
+				cout << "You won and got: " << Enemy.givebounty() << " shekels.\n";
+				_getch();
+				cls;
 				menu = false;
 				percentage += 0.01f;
 			}

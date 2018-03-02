@@ -34,4 +34,5 @@ public:
 	int offer();
 	void pay(int x);
 	void creation();
+	void getmoney(int x);
 };

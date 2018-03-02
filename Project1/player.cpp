@@ -217,3 +217,8 @@ void player::pay(int x)
 {
 	shekels -= x;
 }
+
+void player::getmoney(int x)
+{
+	shekels += x;
+}
