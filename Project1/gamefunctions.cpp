@@ -316,7 +316,7 @@ void inspect()
 				int price = items[x].receivePayment();
 				if (payment < price)
 				{
-					cout << "You do not have enough money to buy that Goy.";
+					cout << "You do not have enough money to buy that.";
 					Sleep(2500);
 					goto retry;
 				}
@@ -324,7 +324,7 @@ void inspect()
 				{
 					Player.pay(price);
 					Player.equip(items[x].checkID(), items[x].retHp(), items[x].retDmg(), items[x].retDef(), items[x].retNa(), items[x].retDe());
-					cout << "Thank you for your purchase Goy.";
+					cout << "Thank you for your purchase.";
 					Sleep(2500);
 					return;
 				}

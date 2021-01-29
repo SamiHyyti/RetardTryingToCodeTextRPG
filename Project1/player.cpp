@@ -105,7 +105,7 @@ void player::giveName()
 void player::chooseClass()
 {
 	bool check = false;
-	cout << "Choose your class\n\n1. Tank\n2. Jew\n3. Battle man\n";
+	cout << "Choose your class\n\n1. Tank\n2. Merchant\n3. Battle man\n";
 	while (check == false)
 	{
 		_getch();
